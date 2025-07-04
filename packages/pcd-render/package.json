@@ -1,0 +1,16 @@
+{
+  "name": "@pcd-annotation/render",
+  "version": "1.0.0",
+  "type": "module",
+  "exports": {
+    "types": "./types/index.d.ts",
+    "import": "./dist/index.es.js",
+    "require": "./dist/index.umd.js"
+  },
+  "scripts": {
+    "start": "run-p \"build:vite --mode development --watch\" \"build:tsc --watch\"",
+    "build": "run-p build:**",
+    "build:vite": "vite build",
+    "build:tsc": "tsc"
+  }
+}
