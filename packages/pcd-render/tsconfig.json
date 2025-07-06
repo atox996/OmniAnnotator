@@ -1,8 +1,0 @@
-{
-  "extends": "@pcd-annotation/configs/tsconfig.build.json",
-  "compilerOptions": {
-    "baseUrl": ".",
-    "declarationDir": "types"
-  },
-  "include": ["src"]
-}

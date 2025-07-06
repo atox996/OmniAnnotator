@@ -1,0 +1,9 @@
+import { Camera } from "../types/camera";
+
+export class PerspectiveCamera implements Camera {
+  // ...属性定义...
+  constructor(/* 参数 */) {
+    // ...初始化...
+  }
+  // ...方法定义...
+}

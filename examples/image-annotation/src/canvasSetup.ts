@@ -1,0 +1,3 @@
+export function setupCanvas(container: HTMLElement) {
+  // ...初始化 Konva/Pixi/原生 Canvas...
+}

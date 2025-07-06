@@ -21,7 +21,7 @@ importers:
       '@eslint/js':
         specifier: ^9.30.1
         version: 9.30.1
-      '@pcd-annotation/configs':
+      '@omni-annotator/configs':
         specifier: workspace:*
         version: link:internal/configs
       '@types/eslint-config-prettier':
