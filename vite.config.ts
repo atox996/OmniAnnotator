@@ -25,7 +25,6 @@ export default defineConfig({
       entry: resolve(__dirname, `packages/${pkg}/src/index.ts`),
       name: pkg,
       fileName: (format) => `index.${format}.js`,
-      formats: ["es", "cjs", "umd"],
     },
     outDir: `packages/${pkg}/dist`,
     emptyOutDir: true,

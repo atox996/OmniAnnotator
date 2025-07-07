@@ -3,8 +3,8 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "bun run scripts/build.ts",
-    "dev": "bun run scripts/dev.ts",
+    "build": "bun scripts/build.ts",
+    "dev": "bun scripts/dev.ts",
     "lint": "run-s prettier eslint tscheck",
     "eslint": "eslint . --cache --fix",
     "tscheck": "tsc --noEmit",
