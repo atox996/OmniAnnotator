@@ -1,6 +1,0 @@
-export class PerspectiveView {
-  // ...existing code...
-  render() {
-    // ...渲染视图...
-  }
-}

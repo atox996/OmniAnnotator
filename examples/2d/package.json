@@ -1,0 +1,11 @@
+{
+  "name": "omni-annotator-example-2d",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "@omni-annotator/renderer": "workspace:*"
+  }
+}
