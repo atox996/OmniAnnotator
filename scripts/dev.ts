@@ -1,41 +1,16 @@
 #!/usr/bin/env bun
-import { spawn } from "child_process";
-import { readdirSync, statSync } from "fs";
-import { join, resolve } from "path";
+import { fuzzyMatch, runViteBuild, topoSort } from "./utils";
 
-const packagesDir = resolve("packages");
-const packages = readdirSync(packagesDir).filter(
-  (name) =>
-    !name.startsWith(".") && statSync(join(packagesDir, name)).isDirectory(),
-);
+const matched = fuzzyMatch(process.argv.slice(2));
+const sorted = topoSort(matched);
 
-const args = process.argv.slice(2);
-let targets: string[] = [];
-let formats = "";
-
-for (let i = 0; i < args.length; i++) {
-  if (args[i] === "--formats" && args[i + 1]) {
-    formats = args[i + 1];
-    i++;
-  } else {
-    targets.push(args[i]);
-  }
+if (!sorted.length) {
+  console.log("No packages matched, exit.");
+  process.exit(1);
 }
 
-if (targets.length === 0) {
-  targets = packages;
-}
+console.log(`Packages to watch: ${sorted.join(", ")}`);
 
-for (const pkg of targets) {
-  if (!packages.includes(pkg)) {
-    console.error(`Unknown package: ${pkg}`);
-    process.exit(1);
-  }
-  const env = { ...process.env, PKG: pkg };
-  const formatArg = formats ? ["--formats", formats] : [];
-  console.log(`\n=== Dev ${pkg} ${formats ? `(${formats})` : ""} ===`);
-  spawn("vite", ["build", "--watch", "--mode", "development", ...formatArg], {
-    env,
-    stdio: "inherit",
-  });
+for (const pkg of sorted) {
+  runViteBuild({ pkg, watch: true, mode: "development", sync: false });
 }
