@@ -1,6 +1,7 @@
 {
   "name": "@omni-annotator/core",
   "version": "0.1.0",
+  "description": "标注核心逻辑，负责标注数据结构、业务规则等",
   "main": "dist/index.umd.js",
   "module": "dist/index.es.js",
   "types": "dist/index.d.ts",

@@ -1,6 +1,7 @@
 {
   "name": "@omni-annotator/utils",
   "version": "0.1.0",
+  "description": "通用工具库，提供各类工具函数，供各子包复用。",
   "main": "dist/index.umd.js",
   "module": "dist/index.es.js",
   "types": "dist/index.d.ts",

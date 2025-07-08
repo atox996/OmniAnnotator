@@ -1,4 +1,4 @@
-import { render3D } from "@omni-annotator/renderer";
+import { render3D } from "@omni-annotator/renderer/3d";
 
 const app = document.getElementById("app");
 if (app) {
