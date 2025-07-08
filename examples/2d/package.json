@@ -5,7 +5,6 @@
     "dev": "vite",
     "build": "vite build"
   },
-  "dependencies": {
-    "@omni-annotator/renderer": "workspace:*"
-  }
+  "version": "0.1.0",
+  "type": "module"
 }

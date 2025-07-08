@@ -1,3 +1,4 @@
+import path from "path";
 import { defineConfig } from "vite";
 
 export default defineConfig({
@@ -12,7 +13,16 @@ export default defineConfig({
       },
     },
   },
-  server: {
-    open: true,
+  resolve: {
+    alias: [
+      {
+        find: /^@omni-annotator\/([^/]+)\/(.*)$/,
+        replacement: path.resolve(__dirname, "../../packages/$1/src/$2"),
+      },
+      {
+        find: /^@omni-annotator\/([^/]+)$/,
+        replacement: path.resolve(__dirname, "../../packages/$1/src"),
+      },
+    ],
   },
 });

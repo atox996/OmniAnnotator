@@ -4,3 +4,4 @@ const app = document.getElementById("app");
 if (app) {
   render3D(app);
 }
+console.log("hello world");
