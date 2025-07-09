@@ -5,12 +5,10 @@ import { defineConfig } from "vite";
 import dtsPlugin from "vite-plugin-dts";
 
 export function createSharedViteConfig(rootDir: string, libName?: string) {
-  if (!libName) {
-    libName = JSON.parse(
-      readFileSync(resolve(rootDir, "package.json"), "utf-8"),
-    ).name;
-  }
-  libName = upperFirst(camelCase(libName));
+  const pkg = JSON.parse(
+    readFileSync(resolve(rootDir, "package.json"), "utf-8"),
+  );
+  libName = upperFirst(camelCase(libName || pkg.name));
 
   return defineConfig({
     root: rootDir,
@@ -22,6 +20,7 @@ export function createSharedViteConfig(rootDir: string, libName?: string) {
       },
       emptyOutDir: true,
       rollupOptions: {
+        external: Object.keys(pkg.peerDependencies || {}),
         output: {
           entryFileNames: `[name].[format].js`,
           chunkFileNames: `[name].[format].js`,

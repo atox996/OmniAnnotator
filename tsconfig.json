@@ -20,6 +20,8 @@
 
     /* ================= 编译选项 ================= */
     "noEmit": true,
+
+    /* ================= 示例项目 ================= */
     "baseUrl": ".",
     "paths": {
       "@omni-annotator/renderer/2d": ["packages/renderer/src/2d"],

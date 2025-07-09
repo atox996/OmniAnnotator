@@ -1,21 +1,19 @@
 {
   "name": "@omni-annotator/renderer",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "type": "module",
   "exports": {
     "./2d": {
       "types": "./dist/2d/index.d.ts",
-      "import": "./dist/2d/index.es.js",
-      "require": "./dist/2d/index.cjs.js"
+      "import": "./dist/2d/index.es.js"
     },
     "./3d": {
       "types": "./dist/3d/index.d.ts",
-      "import": "./dist/3d/index.es.js",
-      "require": "./dist/3d/index.cjs.js"
+      "import": "./dist/3d/index.es.js"
     }
   },
   "dependencies": {
-    "konva": "^9.3.21",
+    "konva": "^9.3.22",
     "three": "^0.178.0"
   },
   "devDependencies": {

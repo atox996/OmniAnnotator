@@ -14,14 +14,7 @@ export default defineConfig({
         "2d/index": resolve(baseConfig.root!, "src/2d/index.ts"),
         "3d/index": resolve(baseConfig.root!, "src/3d/index.ts"),
       },
-      formats: ["es", "cjs"],
-    },
-    rollupOptions: {
-      external: ["konva", "three"],
-      output: {
-        entryFileNames: `[name].[format].js`,
-        chunkFileNames: `[name].[format].js`,
-      },
+      formats: ["es"],
     },
   },
 });
