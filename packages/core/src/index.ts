@@ -1,3 +1,4 @@
-export * from "./controller";
-export * from "./manager";
+export * from "./AnnotationController";
+export * from "./AnnotationManager";
+export * from "./strategies";
 export type * from "./types";

@@ -92,6 +92,9 @@ importers:
 
   packages/renderer:
     dependencies:
+      '@omni-annotator/core':
+        specifier: workspace:*
+        version: link:../core
       konva:
         specifier: ^9.3.22
         version: 9.3.22

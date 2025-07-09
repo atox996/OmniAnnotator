@@ -1,68 +1,96 @@
-// 2D 标注类型
-export interface Rect2D {
-  id: string;
+// 通用几何类型定义
+
+// 2D 形状
+export interface RectGeometry {
   type: "rect";
-  center: { x: number; y: number };
-  size: { width: number; height: number };
-  rotation?: number; // 角度，度
-  userData?: Record<string, unknown>;
+  x: number;
+  y: number;
+  width: number;
+  height: number;
 }
 
-export interface Circle2D {
-  id: string;
+export interface CircleGeometry {
   type: "circle";
-  center: { x: number; y: number };
-  size: { radius: number };
-  userData?: Record<string, unknown>;
+  cx: number;
+  cy: number;
+  r: number;
 }
 
-export interface Polygon2D {
-  id: string;
+export interface PolygonGeometry {
   type: "polygon";
   points: { x: number; y: number }[];
-  userData?: Record<string, unknown>;
 }
 
-export interface Point2D {
-  id: string;
-  type: "point";
-  center: { x: number; y: number };
-  userData?: Record<string, unknown>;
+export interface PolylineGeometry {
+  type: "polyline";
+  points: { x: number; y: number }[];
 }
 
-// 3D 标注类型
-export interface Cuboid3D {
-  id: string;
+export interface LineGeometry {
+  type: "line";
+  x1: number;
+  y1: number;
+  x2: number;
+  y2: number;
+}
+
+// 3D 形状
+export interface CuboidGeometry {
   type: "cuboid";
-  center: { x: number; y: number; z: number };
-  size: { width: number; height: number; depth: number };
-  rotation?: { x: number; y: number; z: number };
-  userData?: Record<string, unknown>;
+  points: { x: number; y: number; z: number }[]; // 8个顶点
 }
 
-export interface Sphere3D {
-  id: string;
-  type: "sphere";
-  center: { x: number; y: number; z: number };
-  size: { radius: number };
-  userData?: Record<string, unknown>;
-}
-
-export interface Polygon3D {
-  id: string;
+export interface Polygon3DGeometry {
   type: "polygon3d";
   points: { x: number; y: number; z: number }[];
-  userData?: Record<string, unknown>;
 }
 
-export interface Point3D {
+export interface SphereGeometry {
+  type: "sphere";
+  cx: number;
+  cy: number;
+  cz: number;
+  r: number;
+}
+
+// Geometry 联合类型
+export type Geometry =
+  | RectGeometry
+  | CircleGeometry
+  | PolygonGeometry
+  | PolylineGeometry
+  | LineGeometry
+  | CuboidGeometry
+  | Polygon3DGeometry
+  | SphereGeometry;
+
+// Annotation 类型定义
+export interface Annotation {
   id: string;
-  type: "point3d";
-  center: { x: number; y: number; z: number };
+  geometry: Geometry;
   userData?: Record<string, unknown>;
 }
 
-// 联合类型
-export type Annotation2D = Rect2D | Circle2D | Polygon2D | Point2D;
-export type Annotation3D = Cuboid3D | Sphere3D | Polygon3D | Point3D;
-export type AnnotationAny = Annotation2D | Annotation3D;
+// 通用绘制策略接口，适用于所有标注形状
+export interface DrawStrategy {
+  /**
+   * 指针按下事件（如鼠标/触摸）
+   */
+  onPointerDown(event: PointerEvent): void;
+  /**
+   * 指针移动事件
+   */
+  onPointerMove(event: PointerEvent): void;
+  /**
+   * 指针抬起事件，返回最终 Annotation 或 null（未完成）
+   */
+  onPointerUp(event: PointerEvent): Annotation | null;
+  /**
+   * 获取当前临时几何数据（用于实时渲染）
+   */
+  getCurrentGeometry(): Geometry | null;
+  /**
+   * 重置内部状态
+   */
+  reset(): void;
+}
