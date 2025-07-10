@@ -8,7 +8,7 @@ async function main() {
   await runOnWorkspacePackages(process.cwd(), (pkg) => {
     procs.push(
       runOrViteBuild("dev", pkg, () => {
-        const config = createSharedViteConfig(pkg.rootDir, pkg.manifest.name);
+        const config = createSharedViteConfig(pkg.rootDir);
         // 这里直接返回 Promise，vite build 的 dev/watch 逻辑
         return build({
           ...config,

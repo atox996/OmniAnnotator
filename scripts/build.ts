@@ -5,6 +5,6 @@ import { createSharedViteConfig } from "./viteConfig";
 
 runOnWorkspacePackages(process.cwd(), (pkg) =>
   runOrViteBuild("build", pkg, () =>
-    build(createSharedViteConfig(pkg.rootDir, pkg.manifest.name)),
+    build(createSharedViteConfig(pkg.rootDir)),
   ),
 );

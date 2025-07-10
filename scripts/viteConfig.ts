@@ -1,22 +1,20 @@
 import { readFileSync } from "fs";
-import { camelCase, upperFirst } from "lodash-es";
-import { resolve } from "path";
+import { normalize, relative, resolve, sep } from "path";
 import { defineConfig } from "vite";
 import dtsPlugin from "vite-plugin-dts";
 
-export function createSharedViteConfig(rootDir: string, libName?: string) {
+export function createSharedViteConfig(rootDir: string) {
   const pkg = JSON.parse(
     readFileSync(resolve(rootDir, "package.json"), "utf-8"),
   );
-  libName = upperFirst(camelCase(libName || pkg.name));
 
+  const entryRoot = resolve(rootDir, "src");
   return defineConfig({
     root: rootDir,
     build: {
       lib: {
-        entry: resolve(rootDir, "src/index.ts"),
-        name: libName,
-        formats: ["es", "umd"],
+        entry: resolve(entryRoot, "index.ts"),
+        formats: ["es"],
       },
       emptyOutDir: true,
       rollupOptions: {
@@ -24,14 +22,28 @@ export function createSharedViteConfig(rootDir: string, libName?: string) {
         output: {
           entryFileNames: `[name].[format].js`,
           chunkFileNames: `[name].[format].js`,
+          manualChunks: (id) => {
+            if (id.includes("node_modules")) {
+              const match = id
+                .toString()
+                .match(/\/node_modules\/(?!.pnpm)(?<moduleName>[^/]*)\//);
+              return `_external/${match?.groups?.moduleName || "integration"}`;
+            } else if (normalize(id).startsWith(entryRoot)) {
+              const relativePath = relative(entryRoot, id).replace(
+                /\.[tj]sx?$/,
+                "",
+              );
+              return relativePath.split(sep).join("/");
+            }
+          },
         },
       },
     },
     plugins: [
       dtsPlugin({
-        entryRoot: resolve(rootDir, "src"),
+        entryRoot: entryRoot,
         outDir: resolve(rootDir, "dist"),
-        include: [resolve(rootDir, "src")],
+        include: [entryRoot],
       }),
     ],
   });

@@ -1,5 +1,5 @@
 {
-  "name": "@omni-annotator/model",
+  "name": "@omni-annotator/core",
   "version": "0.0.1",
   "type": "module",
   "exports": {
@@ -9,6 +9,8 @@
     }
   },
   "dependencies": {
-    "gl-matrix": "^3.4.3"
+    "@omni-annotator/renderer": "workspace:*",
+    "@omni-annotator/model": "workspace:*",
+    "@omni-annotator/plugin": "workspace:*"
   }
 }

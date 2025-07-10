@@ -14,7 +14,7 @@ interface EventTypes {
   clear(): this;
 }
 
-export default class AnnotationModel extends EventEmitter<EventTypes> {
+export class AnnotationModel extends EventEmitter<EventTypes> {
   private annotations = new Map<string, Annotation>();
 
   add(annotations: Annotation[]): this {
