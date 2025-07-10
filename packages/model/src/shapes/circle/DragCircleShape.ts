@@ -1,11 +1,11 @@
 import { vec2 } from "gl-matrix";
 
-import { BaseAnnotation } from "../BaseAnnotation";
-import type { RectAnnotationData } from "./types";
-import { getRectGeometry } from "./utils";
+import { BaseShape } from "../BaseShape";
+import type { CircleShapeData } from "./types";
+import { getCircleShapeData } from "./utils";
 
-export default class DragRectAnnotation extends BaseAnnotation<RectAnnotationData> {
-  readonly type = "rect";
+export default class DragCircleShape extends BaseShape<CircleShapeData> {
+  readonly type = "circle";
   private _start = vec2.create();
   private _current = vec2.create();
   private _drawing = false;
@@ -44,8 +44,8 @@ export default class DragRectAnnotation extends BaseAnnotation<RectAnnotationDat
     event.preventDefault();
   };
 
-  getGeometry(): RectAnnotationData {
-    return getRectGeometry(this._start, this._current);
+  getShape(): CircleShapeData {
+    return getCircleShapeData(this._start, this._current);
   }
 
   reset(): void {

@@ -1,8 +1,8 @@
 import { EventEmitter } from "eventemitter3";
 
-import type { AnnotationData } from "./annotations";
+import type { ShapeData } from "./shapes";
 
-type Annotation = AnnotationData & {
+type Annotation = ShapeData & {
   id: string;
   userData?: Record<string, unknown>;
 };
@@ -11,12 +11,10 @@ interface EventTypes {
   add(annos: Annotation[]): this;
   remove(annos: Annotation[]): this;
   update(annos: Annotation[]): this;
-  select(annos: Annotation[]): this;
-  unselect(annos: Annotation[]): this;
   clear(): this;
 }
 
-export class AnnotationManager extends EventEmitter<EventTypes> {
+export default class AnnotationModel extends EventEmitter<EventTypes> {
   private annotations = new Map<string, Annotation>();
 
   add(annotations: Annotation[]): this {
@@ -63,25 +61,11 @@ export class AnnotationManager extends EventEmitter<EventTypes> {
     return Array.from(this.annotations.values());
   }
 
-  select(ids: string[]): Annotation[] {
-    const selected: Annotation[] = ids
-      .filter((id) => this.annotations.has(id))
-      .map((id) => this.annotations.get(id)!);
-    if (selected.length) this.emit("select", selected);
-    return selected;
-  }
-
-  unselect(ids: string[]): Annotation[] {
-    const unselected: Annotation[] = ids
-      .filter((id) => this.annotations.has(id))
-      .map((id) => this.annotations.get(id)!);
-    if (unselected.length) this.emit("unselect", unselected);
-    return unselected;
-  }
-
   clear(): this {
     this.annotations.clear();
     this.emit("clear");
     return this;
   }
 }
+
+export * from "./shapes";

@@ -1,5 +1,5 @@
 {
-  "name": "@omni-annotator/core",
+  "name": "@omni-annotator/model",
   "version": "0.0.1",
   "type": "module",
   "exports": {

@@ -1,4 +1,4 @@
-export interface RectAnnotationData {
+export interface RectShapeData {
   readonly type: "rect";
   x: number;
   y: number;

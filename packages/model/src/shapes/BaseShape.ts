@@ -15,10 +15,10 @@ interface EventTypes {
   cancel(): void;
 }
 
-export abstract class BaseAnnotation<
-  TGeometry extends { type: string } = { type: string },
+export abstract class BaseShape<
+  TShape extends { type: string } = { type: string },
 > extends EventEmitter<EventTypes> {
-  abstract readonly type: TGeometry["type"];
+  abstract readonly type: TShape["type"];
   container: HTMLElement;
 
   constructor(container: HTMLElement) {
@@ -28,9 +28,9 @@ export abstract class BaseAnnotation<
   }
 
   /**
-   * Get the geometry of the strategy.
+   * Get the shape of the strategy.
    */
-  abstract getGeometry(): TGeometry;
+  abstract getShape(): TShape;
 
   /**
    * Initialize the strategy.

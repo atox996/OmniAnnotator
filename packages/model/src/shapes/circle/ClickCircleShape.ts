@@ -1,10 +1,10 @@
 import { vec2 } from "gl-matrix";
 
-import { BaseAnnotation } from "../BaseAnnotation";
-import type { CircleAnnotationData } from "./types";
-import { getCircleGeometry } from "./utils";
+import { BaseShape } from "../BaseShape";
+import type { CircleShapeData } from "./types";
+import { getCircleShapeData } from "./utils";
 
-export default class ClickCircleAnnotation extends BaseAnnotation<CircleAnnotationData> {
+export default class ClickCircleShape extends BaseShape<CircleShapeData> {
   readonly type = "circle";
   private _start = vec2.create();
   private _current = vec2.create();
@@ -38,8 +38,8 @@ export default class ClickCircleAnnotation extends BaseAnnotation<CircleAnnotati
     event.preventDefault();
   };
 
-  getGeometry(): CircleAnnotationData {
-    return getCircleGeometry(this._start, this._current);
+  getShape(): CircleShapeData {
+    return getCircleShapeData(this._start, this._current);
   }
 
   reset(): void {

@@ -86,7 +86,7 @@ importers:
 
   examples/3d: {}
 
-  packages/core:
+  packages/model:
     dependencies:
       gl-matrix:
         specifier: ^3.4.3
@@ -96,9 +96,9 @@ importers:
 
   packages/renderer:
     dependencies:
-      '@omni-annotator/core':
+      '@omni-annotator/model':
         specifier: workspace:*
-        version: link:../core
+        version: link:../model
       konva:
         specifier: ^9.3.22
         version: 9.3.22
