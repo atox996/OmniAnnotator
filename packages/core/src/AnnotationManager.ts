@@ -1,6 +1,11 @@
 import { EventEmitter } from "eventemitter3";
 
-import type { Annotation } from "./types";
+import type { AnnotationData } from "./annotations";
+
+type Annotation = AnnotationData & {
+  id: string;
+  userData?: Record<string, unknown>;
+};
 
 interface EventTypes {
   add(annos: Annotation[]): this;
@@ -50,8 +55,8 @@ export class AnnotationManager extends EventEmitter<EventTypes> {
 
   get(ids: string[]): Annotation[] {
     return ids
-      .map((id) => this.annotations.get(id))
-      .filter((ann): ann is Annotation => !!ann);
+      .filter((id) => this.annotations.has(id))
+      .map((id) => this.annotations.get(id)!);
   }
 
   getAll(): Annotation[] {

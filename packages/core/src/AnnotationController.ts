@@ -1,39 +1,38 @@
 import type { AnnotationManager } from "./AnnotationManager";
-import type { DrawStrategy, Geometry } from "./types";
+import type { BaseAnnotation } from "./annotations/BaseAnnotation";
 
-export class AnnotationController {
-  private strategy: DrawStrategy | null = null;
+export class AnnotationController<A extends BaseAnnotation, T = A["type"]> {
   private manager: AnnotationManager;
+  private annotations = new Map<T, A>();
+  private annotate?: A;
 
-  constructor(manager: AnnotationManager) {
+  constructor(manager: AnnotationManager, strategies: A[]) {
     this.manager = manager;
+    strategies.forEach((annotate) => {
+      this.annotations.set(annotate.type as T, annotate);
+    });
   }
 
-  // 动态设置/切换策略
-  setStrategy(strategy: DrawStrategy) {
-    strategy.reset();
-    this.strategy?.reset();
-    this.strategy = strategy;
+  enable(type: T) {
+    if (type === this.annotate?.type) return;
+    this.disable();
+    this.annotate = this.annotations.get(type);
+    this.annotate?.init();
   }
 
-  onPointerDown(event: PointerEvent) {
-    this.strategy?.onPointerDown(event);
-  }
-  onPointerMove(event: PointerEvent) {
-    this.strategy?.onPointerMove(event);
-  }
-  onPointerUp(event: PointerEvent) {
-    const anno = this.strategy?.onPointerUp(event);
-    if (anno) {
-      this.manager.add([anno]);
-    }
-  }
-
-  getCurrentGeometry(): Geometry | null {
-    return this.strategy?.getCurrentGeometry() ?? null;
+  disable() {
+    this.annotate?.destroy();
+    this.annotate = undefined;
   }
 
   reset() {
-    this.strategy?.reset();
+    this.annotate?.reset();
+  }
+
+  dispose() {
+    this.manager.clear();
+    this.annotations.forEach((annotate) => annotate.destroy());
+    this.annotations.clear();
+    this.annotate = undefined;
   }
 }
