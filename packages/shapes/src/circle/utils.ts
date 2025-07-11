@@ -1,6 +1,5 @@
+import type { CircleShapeData } from "@omni-annotator/shared";
 import { vec2 } from "gl-matrix";
-
-import type { CircleShapeData } from "./types";
 
 export function getCircleShapeData(
   start: vec2,

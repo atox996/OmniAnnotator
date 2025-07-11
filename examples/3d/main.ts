@@ -1,7 +1,7 @@
-import { render3D } from "@omni-annotator/renderer/3d";
+import { Viewer } from "../../packages/viewer/src/3d";
 
 const app = document.getElementById("app");
 if (app) {
-  render3D(app);
+  const viewer = new Viewer(app);
+  console.log(viewer);
 }
-console.log("hello world");

@@ -1,7 +1,7 @@
+import type { CircleShapeData } from "@omni-annotator/shared";
 import { vec2 } from "gl-matrix";
 
 import { BaseShape } from "../BaseShape";
-import type { CircleShapeData } from "./types";
 import { getCircleShapeData } from "./utils";
 
 export default class DragCircleShape extends BaseShape<CircleShapeData> {

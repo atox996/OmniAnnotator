@@ -1,8 +1,7 @@
+import type { ShapeData } from "@omni-annotator/shared";
 import { EventEmitter } from "eventemitter3";
 
-import type { ShapeData } from "./shapes";
-
-type Annotation = ShapeData & {
+export type Annotation = ShapeData & {
   id: string;
   userData?: Record<string, unknown>;
 };
@@ -67,5 +66,3 @@ export class AnnotationModel extends EventEmitter<EventTypes> {
     return this;
   }
 }
-
-export * from "./shapes";

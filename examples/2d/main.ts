@@ -1,3 +1,9 @@
-import { render2D } from "@omni-annotator/renderer/2d";
+import { Viewer } from "../../packages/viewer/src/2d";
 
-render2D("app");
+const app = document.getElementById("app");
+if (app) {
+  const viewer = new Viewer(app, {
+    hello: true, // debug
+  });
+  console.log(viewer);
+}

@@ -1,5 +1,5 @@
 {
-  "name": "@omni-annotator/renderer",
+  "name": "@omni-annotator/viewer",
   "version": "0.0.1",
   "type": "module",
   "exports": {
@@ -13,7 +13,7 @@
     }
   },
   "dependencies": {
-    "konva": "^9.3.22",
+    "pixi.js": "^8.11.0",
     "three": "^0.178.0"
   },
   "devDependencies": {

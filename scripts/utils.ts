@@ -10,10 +10,9 @@ export async function runOnWorkspacePackages(
 ) {
   const workspaceManifest = await readWorkspaceManifest(repoRoot);
   if (!workspaceManifest) throw new Error("No workspace manifest found");
-  const patterns = workspaceManifest.packages.filter(
-    (p: string) => !p.startsWith("internal/"),
-  );
-  const projects = await findWorkspacePackages(repoRoot, { patterns });
+  const projects = await findWorkspacePackages(repoRoot, {
+    patterns: workspaceManifest.packages,
+  });
   const graph = createPkgGraph(
     projects.filter((project) => project.rootDir !== repoRoot),
   );

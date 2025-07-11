@@ -37,6 +37,10 @@ export function createSharedViteConfig(rootDir: string) {
             }
           },
         },
+        onwarn: (warning, warn) => {
+          if (warning.code === "EMPTY_BUNDLE") return;
+          warn(warning);
+        },
       },
     },
     plugins: [

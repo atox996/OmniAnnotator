@@ -1,5 +1,5 @@
 {
-  "name": "@omni-annotator/model",
+  "name": "@omni-annotator/shared",
   "version": "0.0.1",
   "type": "module",
   "exports": {
@@ -7,8 +7,5 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.es.js"
     }
-  },
-  "dependencies": {
-    "@omni-annotator/shared": "workspace:*"
   }
 }

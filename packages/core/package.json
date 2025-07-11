@@ -1,16 +1,26 @@
 {
-  "name": "@omni-annotator/core",
+  "name": "omni-annotator",
   "version": "0.0.1",
   "type": "module",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.es.js"
+    },
+    "./2d": {
+      "types": "./dist/2d.d.ts",
+      "import": "./dist/2d.es.js"
+    },
+    "./3d": {
+      "types": "./dist/3d.d.ts",
+      "import": "./dist/3d.es.js"
     }
   },
   "dependencies": {
-    "@omni-annotator/renderer": "workspace:*",
     "@omni-annotator/model": "workspace:*",
-    "@omni-annotator/plugin": "workspace:*"
+    "@omni-annotator/plugin": "workspace:*",
+    "@omni-annotator/shapes": "workspace:*",
+    "@omni-annotator/shared": "workspace:*",
+    "@omni-annotator/viewer": "workspace:*"
   }
 }

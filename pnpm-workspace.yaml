@@ -2,6 +2,5 @@ packages:
   - "packages/*"
   - "examples/*"
 onlyBuiltDependencies:
-  - bun
   - esbuild
   - simple-git-hooks

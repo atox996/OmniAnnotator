@@ -19,15 +19,7 @@
     "resolveJsonModule": true,
 
     /* ================= 编译选项 ================= */
-    "noEmit": true,
-
-    /* ================= 示例项目 ================= */
-    "baseUrl": ".",
-    "paths": {
-      "@omni-annotator/renderer/2d": ["packages/renderer/src/2d"],
-      "@omni-annotator/renderer/3d": ["packages/renderer/src/3d"],
-      "@omni-annotator/*": ["packages/*/src"]
-    }
+    "noEmit": true
   },
   "exclude": ["node_modules", "**/dist"]
 }

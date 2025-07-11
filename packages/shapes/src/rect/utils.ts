@@ -1,6 +1,5 @@
+import type { RectShapeData } from "@omni-annotator/shared";
 import { vec2 } from "gl-matrix";
-
-import type { RectShapeData } from "./types";
 
 export function getRectShapeData(start: vec2, end: vec2): RectShapeData {
   const x = Math.min(start[0], end[0]);

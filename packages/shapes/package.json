@@ -1,5 +1,5 @@
 {
-  "name": "@omni-annotator/model",
+  "name": "@omni-annotator/shapes",
   "version": "0.0.1",
   "type": "module",
   "exports": {
@@ -9,6 +9,7 @@
     }
   },
   "dependencies": {
-    "@omni-annotator/shared": "workspace:*"
+    "@omni-annotator/shared": "workspace:*",
+    "gl-matrix": "^3.4.3"
   }
 }

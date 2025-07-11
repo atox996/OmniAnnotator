@@ -1,7 +1,7 @@
+import type { RectShapeData } from "@omni-annotator/shared";
 import { vec2 } from "gl-matrix";
 
 import { BaseShape } from "../BaseShape";
-import type { RectShapeData } from "./types";
 import { getRectShapeData } from "./utils";
 
 export default class DragRectShape extends BaseShape<RectShapeData> {
