@@ -8,7 +8,7 @@ import {
   WebGLRenderer,
 } from "three";
 
-export class Viewer {
+export class Renderer {
   scene: Scene;
   camera: PerspectiveCamera;
   renderer: WebGLRenderer;

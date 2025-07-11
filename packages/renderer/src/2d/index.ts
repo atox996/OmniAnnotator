@@ -1,6 +1,6 @@
 import { Application, type ApplicationOptions } from "pixi.js";
 
-export class Viewer {
+export class Renderer {
   container: HTMLElement;
 
   private app: Application | null = null;
@@ -22,12 +22,12 @@ export class Viewer {
       this._initPromise = this.app.init({
         backgroundColor: "transparent",
         antialias: true,
-        resolution: window.devicePixelRatio || 1,
+        autoDensity: true,
         resizeTo: this.container,
         ...options,
       });
       await this._initPromise;
-      this.container.appendChild(this.app.canvas);
+      if (!options.canvas) this.container.appendChild(this.app.canvas);
     } catch (error) {
       this._initPromise = null;
       throw error;

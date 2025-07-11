@@ -1,7 +1,7 @@
-import { Viewer } from "../../packages/viewer/src/3d";
+import { Renderer } from "../../packages/renderer/src/3d";
 
 const app = document.getElementById("app");
 if (app) {
-  const viewer = new Viewer(app);
-  console.log(viewer);
+  const renderer = new Renderer(app);
+  console.log(renderer);
 }

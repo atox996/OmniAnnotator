@@ -1,5 +1,5 @@
 {
-  "name": "@omni-annotator/plugin",
+  "name": "@omni-annotator/pointer",
   "version": "0.0.1",
   "type": "module",
   "exports": {
@@ -7,5 +7,9 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.es.js"
     }
+  },
+  "dependencies": {
+    "@omni-annotator/shared": "workspace:*",
+    "gl-matrix": "^3.4.3"
   }
 }

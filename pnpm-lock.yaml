@@ -88,31 +88,20 @@ importers:
 
   packages/core:
     dependencies:
-      '@omni-annotator/model':
+      '@omni-annotator/pointer':
         specifier: workspace:*
-        version: link:../model
-      '@omni-annotator/plugin':
+        version: link:../pointer
+      '@omni-annotator/renderer':
         specifier: workspace:*
-        version: link:../plugin
-      '@omni-annotator/shapes':
-        specifier: workspace:*
-        version: link:../shapes
+        version: link:../renderer
       '@omni-annotator/shared':
         specifier: workspace:*
         version: link:../shared
-      '@omni-annotator/viewer':
+      '@omni-annotator/store':
         specifier: workspace:*
-        version: link:../viewer
+        version: link:../store
 
-  packages/model:
-    dependencies:
-      '@omni-annotator/shared':
-        specifier: workspace:*
-        version: link:../shared
-
-  packages/plugin: {}
-
-  packages/shapes:
+  packages/pointer:
     dependencies:
       '@omni-annotator/shared':
         specifier: workspace:*
@@ -121,9 +110,7 @@ importers:
         specifier: ^3.4.3
         version: 3.4.3
 
-  packages/shared: {}
-
-  packages/viewer:
+  packages/renderer:
     dependencies:
       pixi.js:
         specifier: ^8.11.0
@@ -135,6 +122,14 @@ importers:
       '@types/three':
         specifier: ^0.178.0
         version: 0.178.0
+
+  packages/shared: {}
+
+  packages/store:
+    dependencies:
+      '@omni-annotator/shared':
+        specifier: workspace:*
+        version: link:../shared
 
 packages:
 

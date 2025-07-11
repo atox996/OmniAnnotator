@@ -17,10 +17,9 @@
     }
   },
   "dependencies": {
-    "@omni-annotator/model": "workspace:*",
-    "@omni-annotator/plugin": "workspace:*",
-    "@omni-annotator/shapes": "workspace:*",
+    "@omni-annotator/pointer": "workspace:*",
+    "@omni-annotator/renderer": "workspace:*",
     "@omni-annotator/shared": "workspace:*",
-    "@omni-annotator/viewer": "workspace:*"
+    "@omni-annotator/store": "workspace:*"
   }
 }

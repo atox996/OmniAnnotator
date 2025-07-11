@@ -1,5 +1,5 @@
 {
-  "name": "@omni-annotator/plugin-transformer",
+  "name": "@omni-annotator/store",
   "version": "0.0.1",
   "type": "module",
   "exports": {
@@ -9,6 +9,6 @@
     }
   },
   "dependencies": {
-    "@omni-annotator/plugin": "workspace:*"
+    "@omni-annotator/shared": "workspace:*"
   }
 }

@@ -1,9 +1,9 @@
-import { Viewer } from "../../packages/viewer/src/2d";
+import { Renderer } from "../../packages/renderer/src/2d";
 
 const app = document.getElementById("app");
 if (app) {
-  const viewer = new Viewer(app, {
+  const renderer = new Renderer(app, {
     hello: true, // debug
   });
-  console.log(viewer);
+  console.log(renderer);
 }
